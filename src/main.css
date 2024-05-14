@@ -1,0 +1,23 @@
+@import "themes/fro.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.milkdown {
+    @apply px-2 py-4 m-5  rounded;
+}
+.editor {
+    @apply mx-auto outline-0 border-0 ;
+}
+.split-editor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.split-editor:has(.milkdown-split-editor.hidden) {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.milkdown-split-editor.hidden {
+    display: none;
+}
