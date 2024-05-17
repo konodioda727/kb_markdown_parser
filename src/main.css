@@ -1,23 +1,219 @@
-@import "themes/fro.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.milkdown {
-    @apply px-2 py-4 m-5  rounded;
-}
-.editor {
-    @apply mx-auto outline-0 border-0 ;
-}
-.split-editor {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-}
 
-.split-editor:has(.milkdown-split-editor.hidden) {
-    grid-template-columns: repeat(1, 1fr);
-}
+.kb-theme {
+    #write {
+        @apply max-w-[800px] leading-[1.6] text-[14px]
+    }
 
-.milkdown-split-editor.hidden {
-    display: none;
+    .md-meta-block {
+        @apply opacity-[0.3] p-1 transition-all
+    }
+
+    .md-meta-block:hover {
+        opacity: 1;
+    }
+
+    h1 {
+        @apply text-center text-[2.5rem];
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.25rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+    ul, ol li {
+        list-style: disc;
+    }
+    :is(h2, h3, h4, h5, h6) {
+        /*@apply border-b-gold*/
+        &::before {
+            @apply border-0 mr-2 content-['#'] text-blur-text
+        }
+        @apply border-b-gold;
+    }
+
+    a {
+        @apply border-b-[4px] border-b-gold italic
+    }
+
+    p code {
+        @apply bg-gold px-[0.4rem] py-[0.2rem] italic rounded-[0.2rem]
+    }
+
+
+    pre.ty-contain-cm {
+        @apply max-w-[90%] my-[2rem] mx-auto rounded-[4px] text-[0.9rem]
+    }
+
+    pre .CodeMirror {
+        @apply break-inside-avoid-page
+    }
+
+    pre .CodeMirror-scroll {
+        @apply rounded-[5px] overflow-x-auto bg-code-bg break-inside-avoid-page
+    }
+
+    pre .CodeMirror-sizer {
+    }
+
+    pre .CodeMirror-code {
+    }
+
+    pre .CodeMirror-lines {
+        @apply m-[1rem] break-inside-avoid-page
+    }
+
+    pre .CodeMirror-scroll::-webkit-scrollbar {
+        @apply w-[5px] h-[5px]
+    }
+
+    pre .CodeMirror-scroll::-webkit-scrollbar-thumb {
+        @apply h-[8px] border-b-code-bg border-b-[1px] transition-all
+    }
+
+    pre .CodeMirror-scroll::-webkit-scrollbar-thumb:hover {
+        @apply h-[9px] border-b-0 bg-code-bg rounded-[2px]
+    }
+
+    pre .CodeMirror-gutters {
+        height: 100% !important;
+    }
+
+    pre .CodeMirror-gutter {
+    }
+
+    pre .CodeMirror-linenumber {
+        width: 2rem !important;
+        left: -5px !important;
+        @apply pr-[0.5rem] text-center
+
+    }
+
+    .code-tooltip.md-tooltip-remove {
+        @apply border-code-bg rounded-[5px]
+    }
+
+    blockquote {
+        @apply mt-[16px] mx-auto py-[20px] px-[30px] bg-quote-bg rounded-[4px] border-l-[4px] border-l-text-muted transition-all z-0 relative
+    }
+
+    blockquote > :is(p, ol, ul, pre, table):first-child::before {
+        @apply content-['format_quote'] font-material absolute block top-[-30px] right-[-20px] text-[2.4rem] text-text-muted opacity-[0.2]
+    }
+
+    blockquote:hover {
+        @apply border-l-[4px] border-l-text
+    }
+
+    #write p code {
+        @apply py-[2px] px-[4px] text-[0.9rem] text-text-muted bg-code-bg rounded-[4px]
+    }
+
+    #write p code::before {
+        content: "`";
+    }
+
+    #write p code::after {
+        content: "`";
+    }
+
+    #write p strong {
+        @apply text-[600] text-accent
+    }
+
+    #write p u {
+        text-underline-offset: 3px;
+    }
+
+    #write p mark {
+        @apply bg-accent text-bg py-[2px] px-[4px] rounded-[4px]
+    }
+
+    .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) mark span {
+        @apply bg-accent text-block-important-bg
+    }
+
+    #write p sup {
+        @apply text-[0.8rem] leading-[1] top-[-0.5rem] bg-transparent
+    }
+
+    #write p sup::before {
+        @apply content-['['] relative
+    }
+
+    #write p sup::after {
+        @apply content-[']'] relative
+    }
+
+    #write p sup.md-expand::after,
+    #write p sup.md-expand::before {
+        display: none;
+    }
+
+    #write p ul li::marker,  p ol li::marker {
+        @apply text-accent
+    }
+
+    #write p a {
+        @apply text-a decoration-text underline-offset-[3px]
+    }
+
+    #write .md-alert {
+        @apply my-[16px] mx-auto py-[10px] px-[30px] rounded-[4px] border-l-0 break-inside-avoid-page
+    }
+
+    #write .md-alert.md-alert-note {
+        @apply bg-block-note-bg
+    }
+
+    #write .md-alert.md-alert-tip {
+        @apply bg-block-tip-bg
+    }
+
+    #write .md-alert.md-alert-important {
+        @apply bg-block-important-bg
+    }
+
+    #write .md-alert.md-alert-warning {
+        @apply bg-block-warning-bg
+    }
+
+    #write .md-alert.md-alert-caution {
+        @apply bg-block-caution-bg
+    }
+
+    .md-toc {
+        margin: 2rem auto;
+    }
+
+    a.md-toc-inner {
+        font-size: 1.2rem;
+    }
+
+    .md-toc .md-toc-tooltip {
+        display: block !important;
+    }
+
+    .md-toc .md-toc-tooltip span {
+        font-size: 1.5rem;
+
+    }
 }

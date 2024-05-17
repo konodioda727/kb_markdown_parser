@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MdEditor } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 import { config } from 'md-editor-rt';
 import anchor from 'markdown-it-anchor';
 import { lineNumbers } from '@codemirror/view';
+import {EditorProps} from "./types.ts";
+import {toolbarConfig} from "./editor.config.tsx";
 
 config({
     codeMirrorExtensions(_theme, extensions) {
@@ -16,34 +18,13 @@ config({
     }
 });
 
-export default () => {
+const Editor: React.FC<EditorProps> = () => {
     const [text, setText] = useState('# Hello Editor');
-    return <MdEditor toolbars={[
-        'revoke',
-        'next',
-        'bold',
-        'underline',
-        'italic',
-        '-',
-        'strikeThrough',
-        'title',
-        'sub',
-        'sup',
-        'quote',
-        'unorderedList',
-        'orderedList',
-        'task', // ^2.4.0
-        '-',
-        'codeRow',
-        'code',
-        'link',
-        'image',
-        'table',
-        'mermaid',
-        'katex',
-
-        '=',
-        'save',
-        'preview',
-    ]} modelValue={text} onChange={setText} />;
+    return (
+        <>
+            <MdEditor previewTheme='kb' toolbars={toolbarConfig} modelValue={text} onChange={setText} />
+        </>
+    );
 };
+
+export default Editor

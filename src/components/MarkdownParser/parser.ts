@@ -1,5 +1,5 @@
 import {ParserFnType, ParserNameType, ParserType} from "./types";
-import defaultParsers from "./defaultParsers";
+import defaultParsers from "./defaultParsers.ts";
 
 export class Parser {
     private _parsers: ParserType

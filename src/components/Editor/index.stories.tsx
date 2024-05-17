@@ -21,7 +21,6 @@ type Story = StoryObj<typeof Editor>
 export const Custom: Story = {
     args: {
         defaultValue: '123123123',
-        type: 'light',
         onSubmit: fn()
     },
     parameters: {
@@ -36,7 +35,7 @@ export const Custom: Story = {
     ],
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement)
-        // await userEvent.type(canvas.getByRole('textbox'), '\n\n # Hello World \n\n')
-        // await userEvent.type(canvas.getByRole('textbox'), '<div>hello test</div>')
+        await userEvent.type(canvas.getByRole('textbox'), '\n\n # Hello World \n\n')
+        await userEvent.type(canvas.getByRole('textbox'), '<div>hello test</div>')
     }
 }
